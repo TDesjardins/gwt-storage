@@ -85,13 +85,13 @@ public abstract class StorageMapTest extends MapInterfaceTest<String, String> {
     }
 
     storage.clear();
-    
+
     storage.setItem("one", "January");
     storage.setItem("two", "February");
     storage.setItem("three", "March");
     storage.setItem("four", "April");
     storage.setItem("five", "May");
-    
+
     return new StorageMap(storage);
   }
 }
