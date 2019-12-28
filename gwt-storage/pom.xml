@@ -29,10 +29,12 @@
   </developers>
 
   <scm>
-    <connection>scm:git:git://github.com/avierax/gwt-storage.git</connection>
-    <developerConnection>scm:git:ssh://github.com:avierax/gwt-storage.git</developerConnection>
-    <url>https://github.com/avierax/gwt-storage/tree/master</url>
+    <connection>scm:git:git://github.com/gwtproject/gwt-storage.git</connection>
+    <developerConnection>scm:git:ssh://github.com/gwtproject/gwt-storage.git</developerConnection>
+    <url>https://github.com/gwtproject/gwt-storage/tree/master</url>
   </scm>
+
+  <inceptionYear>2019</inceptionYear>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,8 +55,6 @@
   </properties>
 
   <dependencies>
-    <!-- no gwt or elemental2 yet! add them or other existing dependencies as needed -->
-
     <dependency>
       <groupId>org.gwtproject.event</groupId>
       <artifactId>gwt-event</artifactId>
@@ -98,6 +98,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${maven.compiler.plugin}</version>
         <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
         </configuration>
