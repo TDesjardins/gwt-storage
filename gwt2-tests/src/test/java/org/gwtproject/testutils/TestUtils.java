@@ -15,9 +15,7 @@
  */
 package org.gwtproject.testutils;
 
-/**
- * Utility functions needed by various tests.
- */
+/** Utility functions needed by various tests. */
 public class TestUtils {
 
   public static int getJdkVersion() {

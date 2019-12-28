@@ -20,21 +20,19 @@ import static elemental2.dom.DomGlobal.console;
 /**
  * A set of methods used as a temporary substitution of static GWT.* method calls.
  *
- * The actual behaviour should be decided later.
+ * <p>The actual behaviour should be decided later.
  */
 class GwtMigrationUtils {
 
   /**
    * This documentation is copied verbatim from GWT.reportUncaughtException.
    *
-   * Reports an exception caught at the "top level" to a handler set via
-   * {@link #setUncaughtExceptionHandler(UncaughtExceptionHandler)}. This is
-   * used in places where the browser calls into user code such as event
-   * callbacks, timers, and RPC.
-   * <p>
-   * If no {@code UncaughtExceptionHandler} is set, the exception is reported
-   * to browser. Browsers usually log these exceptions to the JavaScript
-   * console.
+   * <p>Reports an exception caught at the "top level" to a handler set via {@link
+   * #setUncaughtExceptionHandler(UncaughtExceptionHandler)}. This is used in places where the
+   * browser calls into user code such as event callbacks, timers, and RPC.
+   *
+   * <p>If no {@code UncaughtExceptionHandler} is set, the exception is reported to browser.
+   * Browsers usually log these exceptions to the JavaScript console.
    */
   public static void reportUncaughtException(Throwable t) {
     console.log(t.toString());

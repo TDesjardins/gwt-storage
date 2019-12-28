@@ -20,8 +20,6 @@ import static java.util.Collections.singleton;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
-import org.gwtproject.testutils.TestUtils;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -30,16 +28,15 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.gwtproject.testutils.TestUtils;
 
 /**
- * Tests representing the contract of {@link Map}. Concrete subclasses of this
- * base class test conformance of concrete {@link Map} subclasses to that
- * contract.
+ * Tests representing the contract of {@link Map}. Concrete subclasses of this base class test
+ * conformance of concrete {@link Map} subclasses to that contract.
  *
- * TODO: Descriptive assertion messages, with hints as to probable fixes.
- * TODO: Add another constructor parameter indicating whether the class under
- * test is ordered, and check the order if so.
- * TODO: Refactor to share code with SetTestBuilder.
+ * <p>TODO: Descriptive assertion messages, with hints as to probable fixes. TODO: Add another
+ * constructor parameter indicating whether the class under test is ordered, and check the order if
+ * so. TODO: Refactor to share code with SetTestBuilder.
  *
  * @param <K> the type of keys used by the maps under test
  * @param <V> the type of mapped values used the maps under test
@@ -57,59 +54,64 @@ public abstract class MapInterfaceTest<K, V> extends GWTTestCase {
    * Creates a new, empty instance of the class under test.
    *
    * @return a new, empty map instance.
-   * @throws UnsupportedOperationException if it's not possible to make an empty
-   *           instance of the class under test.
+   * @throws UnsupportedOperationException if it's not possible to make an empty instance of the
+   *     class under test.
    */
-  protected abstract Map<K, V> makeEmptyMap()
-      throws UnsupportedOperationException;
+  protected abstract Map<K, V> makeEmptyMap() throws UnsupportedOperationException;
 
   /**
    * Creates a new, non-empty instance of the class under test.
    *
    * @return a new, non-empty map instance.
-   * @throws UnsupportedOperationException if it's not possible to make a
-   *           non-empty instance of the class under test.
+   * @throws UnsupportedOperationException if it's not possible to make a non-empty instance of the
+   *     class under test.
    */
-  protected abstract Map<K, V> makePopulatedMap()
-      throws UnsupportedOperationException;
+  protected abstract Map<K, V> makePopulatedMap() throws UnsupportedOperationException;
 
   /**
-   * Creates a new key that is not expected to be found in
-   * {@link #makePopulatedMap()}.
+   * Creates a new key that is not expected to be found in {@link #makePopulatedMap()}.
    *
    * @return a key.
-   * @throws UnsupportedOperationException if it's not possible to make a key
-   *           that will not be found in the map.
+   * @throws UnsupportedOperationException if it's not possible to make a key that will not be found
+   *     in the map.
    */
-  protected abstract K getKeyNotInPopulatedMap()
-      throws UnsupportedOperationException;
+  protected abstract K getKeyNotInPopulatedMap() throws UnsupportedOperationException;
 
   /**
-   * Creates a new value that is not expected to be found in
-   * {@link #makePopulatedMap()}.
+   * Creates a new value that is not expected to be found in {@link #makePopulatedMap()}.
    *
    * @return a value.
-   * @throws UnsupportedOperationException if it's not possible to make a value
-   *           that will not be found in the map.
+   * @throws UnsupportedOperationException if it's not possible to make a value that will not be
+   *     found in the map.
    */
-  protected abstract V getValueNotInPopulatedMap()
-      throws UnsupportedOperationException;
+  protected abstract V getValueNotInPopulatedMap() throws UnsupportedOperationException;
 
   /**
-   * Constructor that assigns {@code supportsIteratorRemove} the same value as
-   * {@code supportsRemove}.
+   * Constructor that assigns {@code supportsIteratorRemove} the same value as {@code
+   * supportsRemove}.
    */
-  protected MapInterfaceTest(boolean allowsNullKeys, boolean allowsNullValues,
-      boolean supportsPut, boolean supportsRemove, boolean supportsClear) {
-    this(allowsNullKeys, allowsNullValues, supportsPut, supportsRemove,
-        supportsClear, supportsRemove);
+  protected MapInterfaceTest(
+      boolean allowsNullKeys,
+      boolean allowsNullValues,
+      boolean supportsPut,
+      boolean supportsRemove,
+      boolean supportsClear) {
+    this(
+        allowsNullKeys,
+        allowsNullValues,
+        supportsPut,
+        supportsRemove,
+        supportsClear,
+        supportsRemove);
   }
 
-  /**
-   * Constructor with an explicit {@code supportsIteratorRemove} parameter.
-   */
-  protected MapInterfaceTest(boolean allowsNullKeys, boolean allowsNullValues,
-      boolean supportsPut, boolean supportsRemove, boolean supportsClear,
+  /** Constructor with an explicit {@code supportsIteratorRemove} parameter. */
+  protected MapInterfaceTest(
+      boolean allowsNullKeys,
+      boolean allowsNullValues,
+      boolean supportsPut,
+      boolean supportsRemove,
+      boolean supportsClear,
       boolean supportsIteratorRemove) {
     this.supportsPut = supportsPut;
     this.supportsRemove = supportsRemove;
@@ -120,8 +122,7 @@ public abstract class MapInterfaceTest<K, V> extends GWTTestCase {
   }
 
   /**
-   * Used by tests that require a map, but don't care whether it's populated or
-   * not.
+   * Used by tests that require a map, but don't care whether it's populated or not.
    *
    * @return a new map instance.
    */
@@ -182,8 +183,7 @@ public abstract class MapInterfaceTest<K, V> extends GWTTestCase {
 
     assertEquals(map.size(), valueCollection.size());
     assertEquals(valueCollection.size() == 0, valueCollection.isEmpty());
-    assertEquals(!valueCollection.isEmpty(),
-        valueCollection.iterator().hasNext());
+    assertEquals(!valueCollection.isEmpty(), valueCollection.iterator().hasNext());
     for (V value : valueCollection) {
       assertTrue(map.containsValue(value));
       assertTrue(allowsNullValues || (value != null));
@@ -200,9 +200,9 @@ public abstract class MapInterfaceTest<K, V> extends GWTTestCase {
       for (Entry<K, V> entry : entrySet) {
         assertTrue(map.containsKey(entry.getKey()));
         assertTrue(map.containsValue(entry.getValue()));
-        int expectedHash = (entry.getKey() == null ? 0
-            : entry.getKey().hashCode())
-            ^ (entry.getValue() == null ? 0 : entry.getValue().hashCode());
+        int expectedHash =
+            (entry.getKey() == null ? 0 : entry.getKey().hashCode())
+                ^ (entry.getValue() == null ? 0 : entry.getValue().hashCode());
         assertEquals(expectedHash, entry.hashCode());
         expectedEntrySetHash += expectedHash;
       }
@@ -243,14 +243,12 @@ public abstract class MapInterfaceTest<K, V> extends GWTTestCase {
   }
 
   /**
-   * Override this to check invariants which should hold true for a particular
-   * implementation, but which are not generally applicable to every instance of
-   * Map.
+   * Override this to check invariants which should hold true for a particular implementation, but
+   * which are not generally applicable to every instance of Map.
    *
    * @param map the map whose additional invariants to check.
    */
-  protected void assertMoreInvariants(Map<K, V> map) {
-  }
+  protected void assertMoreInvariants(Map<K, V> map) {}
 
   public void testClear() {
     final Map<K, V> map;

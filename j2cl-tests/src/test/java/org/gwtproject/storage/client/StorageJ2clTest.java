@@ -30,10 +30,8 @@
  */
 package org.gwtproject.storage.client;
 
-import static junit.framework.TestCase.assertTrue;
 
 import com.google.j2cl.junit.apt.J2clTestInput;
-import org.gwtproject.storage.client.Storage;
 import org.junit.Test;
 
 /** Storage test. */
@@ -44,5 +42,4 @@ public class StorageJ2clTest {
   public void testStorage() {
     Storage.getLocalStorageIfSupported();
   }
-
 }

@@ -1,12 +1,12 @@
 /*
  * Copyright 2011 Google Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -18,9 +18,7 @@ package org.gwtproject.storage.client;
 
 import java.util.Map;
 
-/**
- * Tests {@link StorageMap}.
- */
+/** Tests {@link StorageMap}. */
 public abstract class StorageMapTest extends MapInterfaceTest<String, String> {
   protected Storage storage;
 
@@ -46,42 +44,40 @@ public abstract class StorageMapTest extends MapInterfaceTest<String, String> {
 
   /**
    * Returns a {@link Storage} object.
-   * 
-   * Override to return either a LocalStorage or a SessionStorage
-   * 
+   *
+   * <p>Override to return either a LocalStorage or a SessionStorage
+   *
    * @return a {@link Storage} object
    */
   abstract Storage getStorage();
 
   @Override
-  protected String getKeyNotInPopulatedMap()
-      throws UnsupportedOperationException {
+  protected String getKeyNotInPopulatedMap() throws UnsupportedOperationException {
     return "nonExistingKey";
   }
 
   @Override
-  protected String getValueNotInPopulatedMap()
-      throws UnsupportedOperationException {
+  protected String getValueNotInPopulatedMap() throws UnsupportedOperationException {
     return "nonExistingValue";
   }
 
   @Override
-  protected Map<String, String> makeEmptyMap()
-      throws UnsupportedOperationException {
+  protected Map<String, String> makeEmptyMap() throws UnsupportedOperationException {
     if (storage == null) {
-      throw new UnsupportedOperationException("StorageMap not supported because Storage is not supported.");
+      throw new UnsupportedOperationException(
+          "StorageMap not supported because Storage is not supported.");
     }
 
     storage.clear();
-    
+
     return new StorageMap(storage);
   }
 
   @Override
-  protected Map<String, String> makePopulatedMap()
-      throws UnsupportedOperationException {
+  protected Map<String, String> makePopulatedMap() throws UnsupportedOperationException {
     if (storage == null) {
-      throw new UnsupportedOperationException("StorageMap not supported because Storage is not supported.");
+      throw new UnsupportedOperationException(
+          "StorageMap not supported because Storage is not supported.");
     }
 
     storage.clear();

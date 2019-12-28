@@ -24,10 +24,8 @@ import jsinterop.base.JsPropertyMap;
 /**
  * Implementation of Storage with non-native events.
  *
- * <p>
- * Implementation of StorageEvents is incomplete for many browsers. This class 
- * amends the properties consistently with W3C's StorageEvent.
- * </p>
+ * <p>Implementation of StorageEvents is incomplete for many browsers. This class amends the
+ * properties consistently with W3C's StorageEvent.
  */
 class StorageImplNonNativeEvents extends StorageImpl {
 
@@ -38,9 +36,11 @@ class StorageImplNonNativeEvents extends StorageImpl {
     init.set("oldValue", oldValue);
     init.set("newValue", newValue);
     init.set("url", window.location.getHref());
-    init.set("storageArea", "localStorage".equals(storageName) ?
-        WebStorageWindow.of(window).localStorage :
-        WebStorageWindow.of(window).sessionStorage);
+    init.set(
+        "storageArea",
+        "localStorage".equals(storageName)
+            ? WebStorageWindow.of(window).localStorage
+            : WebStorageWindow.of(window).sessionStorage);
     return StorageEvent.createEvent(init);
   }
 

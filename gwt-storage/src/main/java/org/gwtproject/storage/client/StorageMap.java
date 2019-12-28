@@ -24,28 +24,22 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
- * Exposes the local/session {@link Storage} as a standard {@link Map
- * Map&lt;String, String&gt;}.
+ * Exposes the local/session {@link Storage} as a standard {@link Map Map&lt;String, String&gt;}.
  *
- * <p>
- * <span style="color:red">Experimental API: This API is still under development
- * and is subject to change. </span>
- * </p>
+ * <p><span style="color:red">Experimental API: This API is still under development and is subject
+ * to change. </span>
  *
- * <p>
- * The following characteristics are associated with this Map:
- * </p>
+ * <p>The following characteristics are associated with this Map:
+ *
  * <ol>
- * <li><em>Mutable</em> - All 'write' methods ({@link #put(String, String)},
- * {@link #putAll(Map)}, {@link #remove(Object)}, {@link #clear()},
- * {@link Entry#setValue(Object)}) operate as intended;</li>
- * <li><em>remove() on Iterators</em> - All remove() operations on available
- * Iterators (from {@link #keySet()}, {@link #entrySet()} and {@link #values()})
- * operate as intended;</li>
- * <li><em>No <code>null</code> values and keys</em> - The Storage doesn't
- * accept keys or values which are <code>null</code>;</li>
- * <li><em>String values and keys</em> - All keys and values in this Map are
- * String types.</li>
+ *   <li><em>Mutable</em> - All 'write' methods ({@link #put(String, String)}, {@link #putAll(Map)},
+ *       {@link #remove(Object)}, {@link #clear()}, {@link Entry#setValue(Object)}) operate as
+ *       intended;
+ *   <li><em>remove() on Iterators</em> - All remove() operations on available Iterators (from
+ *       {@link #keySet()}, {@link #entrySet()} and {@link #values()}) operate as intended;
+ *   <li><em>No <code>null</code> values and keys</em> - The Storage doesn't accept keys or values
+ *       which are <code>null</code>;
+ *   <li><em>String values and keys</em> - All keys and values in this Map are String types.
  * </ol>
  */
 public class StorageMap extends AbstractMap<String, String> {
@@ -181,9 +175,8 @@ public class StorageMap extends AbstractMap<String, String> {
   /**
    * Creates the Map with the specified Storage as data provider.
    *
-   * @param storage a local/session Storage instance obtained by either
-   *          {@link Storage#getLocalStorageIfSupported()} or
-   *          {@link Storage#getSessionStorageIfSupported()}.
+   * @param storage a local/session Storage instance obtained by either {@link
+   *     Storage#getLocalStorageIfSupported()} or {@link Storage#getSessionStorageIfSupported()}.
    */
   public StorageMap(Storage storage) {
     assert storage != null : "storage cannot be null";
@@ -210,9 +203,8 @@ public class StorageMap extends AbstractMap<String, String> {
   }
 
   /**
-   * Returns <code>true</code> if the Storage contains the specified value,
-   * <code>false</code> otherwise (or if the specified key is <code>null</code>
-   * ).
+   * Returns <code>true</code> if the Storage contains the specified value, <code>false</code>
+   * otherwise (or if the specified key is <code>null</code> ).
    */
   @Override
   public boolean containsValue(Object value) {
@@ -229,9 +221,7 @@ public class StorageMap extends AbstractMap<String, String> {
     return false;
   }
 
-  /**
-   * Returns a Set containing all entries of the Storage.
-   */
+  /** Returns a Set containing all entries of the Storage. */
   @Override
   public Set<Map.Entry<String, String>> entrySet() {
     return new StorageEntrySet();
@@ -274,8 +264,8 @@ public class StorageMap extends AbstractMap<String, String> {
    * Removes the key/value pair from the Storage.
    *
    * @param key the key identifying the item to remove
-   * @return the value associated with the key - <code>null</code> if the key
-   *         was not present in the Storage
+   * @return the value associated with the key - <code>null</code> if the key was not present in the
+   *     Storage
    * @see Storage#removeItem(String)
    */
   @Override
